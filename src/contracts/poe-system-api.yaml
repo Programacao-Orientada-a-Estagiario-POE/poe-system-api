@@ -1,0 +1,76 @@
+openapi: "3.0.2"
+info:
+  title: POE System API
+  version: "1.0"
+paths:
+  /user:
+    put:
+      tags:
+        - /user
+      description: >-
+        Creates an user!
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/User"
+      responses:
+        "200":
+          description: Successful request.
+          content:
+            application/json:
+              schema:
+                type: object
+        default:
+          description: Invalid request.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    post:
+      tags:
+        - /user
+      description: >-
+        Creates an user!
+
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/User"
+      responses:
+        "201":
+          description: Successful request.
+          content:
+            application/json:
+              schema:
+                type: object
+        default:
+          description: Invalid request.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+servers:
+  - url: "http://localhost:3000/api"
+components:
+  schemas:
+    Error:
+      properties:
+        message:
+          type: string
+      required:
+        - message
+    User:
+      required:
+        - name
+        - email
+        - password
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+        password:
+          type: string

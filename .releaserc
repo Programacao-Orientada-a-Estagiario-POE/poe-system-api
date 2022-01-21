@@ -1,0 +1,35 @@
+{
+  "plugins": [
+    "@semantic-release/commit-analyzer",
+    "@semantic-release/release-notes-generator",
+    "@semantic-release/changelog",
+    [
+      "@semantic-release/npm",
+      {
+        "npmPublish": false
+      }
+    ],
+    [
+      "@semantic-release/git",
+      {
+        "message": "Release <%= nextRelease.version %> [skip ci]",
+        "assets": [
+          "package.json",
+          "CHANGELOG.md"
+        ]
+      }
+    ]
+  ],
+  "branches": [
+    {
+      "name": "main"
+    },
+    {
+      "name": "stage",
+      "channel": "beta",
+      "prerelease": "beta"
+    }
+  ],
+  "type": "git",
+  "url": "git@github.com:Programacao-Orientada-a-Estagiario-POE/poe-system-api.git"
+}
