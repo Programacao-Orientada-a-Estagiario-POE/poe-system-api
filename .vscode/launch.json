@@ -23,6 +23,17 @@
       "cwd": "${workspaceFolder}",
       "runtimeExecutable": "yarn",
       "args": ["test", "--runInBand", "--watchAll=false"]
+    },
+    {
+      "type": "node",
+      "name": "jest-tests-integration-watcher",
+      "request": "launch",
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "disableOptimisticBPs": true,
+      "cwd": "${workspaceFolder}",
+      "runtimeExecutable": "yarn",
+      "args": ["test:int:watch", "--runInBand", "--watchAll=false"]
     }
   ]
 }
