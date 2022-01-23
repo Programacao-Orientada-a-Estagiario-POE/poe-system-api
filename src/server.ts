@@ -15,6 +15,7 @@ import {
   validatorMiddleware,
 } from "./lib/middleware";
 import { HealthControllerFactory } from "./configurations/factory/health.controller.factory";
+import { UserControllerFactory } from "./configurations/factory/user.controller.factory";
 
 const OPEN_API_SPEC_FILE_LOCATION = path.join(
   __dirname,
@@ -32,6 +33,7 @@ const app = new App({
       version,
       port: PORT,
     }),
+    UserControllerFactory.create(),
   ],
   middleWaresToStart: [express.json(), express.urlencoded({ extended: true })],
   middleWares: [

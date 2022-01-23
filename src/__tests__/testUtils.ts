@@ -1,6 +1,7 @@
 import { App } from "../app";
 import { DatabaseMongooseFactory, mongoose } from "../lib/db";
 import { configApp } from "./configApp";
+import { USER_MOCK } from "./mocks/user.mock";
 
 export async function bootstrapTest() {
   const DATABASE_URI = String(process.env.DATABASE_URI);
@@ -19,8 +20,11 @@ export async function bootstrapTest() {
 
 export async function seedDatabaseTest() {
   const { db } = mongoose.connection;
+  const userCollection = db.collection("user");
+  await userCollection.insertMany([USER_MOCK]);
 }
 
 export async function dropDatabaseTest() {
   const { db } = mongoose.connection;
+  await db.dropCollection("user");
 }

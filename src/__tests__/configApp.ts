@@ -4,6 +4,7 @@ import path from "path";
 import { authorizationMiddleware } from "../configurations/authorization";
 
 import { name, version } from "../../package.json";
+
 import {
   swaggerAppCustomizer,
   validationAppCustomizer,
@@ -11,6 +12,8 @@ import {
 } from "../lib/middleware";
 import { IDatabase } from "../lib/db";
 import { HealthControllerFactory } from "../configurations/factory/health.controller.factory";
+
+import { UserControllerFactory } from "../configurations/factory/user.controller.factory";
 
 const OPEN_API_SPEC_FILE_LOCATION = path.join(
   __dirname,
@@ -30,6 +33,7 @@ function configApp(dbInstance: IDatabase) {
         version,
         port: PORT,
       }),
+      UserControllerFactory.create(),
     ],
     middleWaresToStart: [
       express.json(),
