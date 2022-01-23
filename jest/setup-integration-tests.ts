@@ -1,6 +1,3 @@
-import "pusher";
-import "axios";
-
 import {
   bootstrapTest,
   dropDatabaseTest,
@@ -11,8 +8,6 @@ import { App } from "../src/app";
 
 let dbInstance: IDatabase;
 export let app: App;
-
-jest.mock("axios");
 
 beforeAll(async () => {
   const bootstrap = await bootstrapTest();

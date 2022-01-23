@@ -1,14 +1,11 @@
-const defaultConfig = require('./jest.config');
+const defaultConfig = require("./jest.config");
 
 module.exports = {
   ...defaultConfig,
-  testRegex: '.*\\.int.test\\.ts$',
-  coverageDirectory: '../coverage/int',
-  setupFilesAfterEnv: [
-    '../jest/jest.setup.redis-mock.js',
-    '../jest/setup-integration-tests.ts',
-  ],
+  testRegex: ".*\\.int.test\\.ts$",
+  coverageDirectory: "../coverage/int",
+  setupFilesAfterEnv: ["../jest/setup-integration-tests.ts"],
   setupFiles: [...defaultConfig.setupFiles],
-  globalSetup: '../jest/start-integration.ts',
-  globalTeardown: '../jest/stop-integration.ts',
+  globalSetup: "../jest/start-integration.ts",
+  globalTeardown: "../jest/stop-integration.ts",
 };

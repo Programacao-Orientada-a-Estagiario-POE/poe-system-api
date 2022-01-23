@@ -4,7 +4,6 @@ import path from "path";
 import { authorizationMiddleware } from "../configurations/authorization";
 
 import { name, version } from "../../package.json";
-import { UserControllerFactory } from "../configurations/factory/user.controller.factory";
 import {
   swaggerAppCustomizer,
   validationAppCustomizer,
@@ -16,14 +15,14 @@ import { HealthControllerFactory } from "../configurations/factory/health.contro
 const OPEN_API_SPEC_FILE_LOCATION = path.join(
   __dirname,
   "../",
-  "contracts/qd-merlot-service-api.yaml"
+  "contracts/poe-system-api.yaml"
 );
 const PORT = Number(process.env.PORT);
 function configApp(dbInstance: IDatabase) {
   const config = {
     port: PORT,
     customizers: [swaggerAppCustomizer, validationAppCustomizer],
-    controllers: [UserControllerFactory.create()],
+    controllers: [],
     database: dbInstance,
     controllersBeforeMiddlewares: [
       HealthControllerFactory.create({
