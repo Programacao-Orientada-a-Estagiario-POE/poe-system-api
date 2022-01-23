@@ -1,32 +1,21 @@
-import { Types, Document, Schema } from "mongoose";
+import { Document, Schema } from "mongoose";
 import { IUser } from "../../../../domain/user/interface/user.interface";
 import { mongoose } from "../../../../lib/db";
 
 export interface IMUser extends Document<IUser> {}
 
-const customFieldSchema = new Schema({
-  key: {
-    type: String,
-    required: false,
-  },
-  value: {
-    type: String,
-    required: false,
-  },
-});
-
 const userSchema = new Schema(
   {
-    externalId: {
-      type: Types.ObjectId,
-      required: false,
-    },
-    nome: {
+    name: {
       type: String,
       required: false,
     },
-    customFields: {
-      type: [customFieldSchema],
+    email: {
+      type: String,
+      required: false,
+    },
+    password: {
+      type: String,
       required: false,
     },
     createdAt: {
@@ -39,37 +28,10 @@ const userSchema = new Schema(
       required: false,
       default: Date.now,
     },
-    lastMessageSendedAt: {
-      type: Date,
-      required: false,
-    },
-    lastOnlineAt: {
-      type: Date,
-      required: false,
-    },
-    currentsChatId: {
-      type: [Types.ObjectId],
-      required: false,
-    },
-    currentsSocketIds: {
-      type: [Types.ObjectId],
-      required: false,
-    },
-    lastAccessTokenGeneratedAt: {
-      type: Date,
-      required: false,
-    },
-    lastAccessToken: {
-      type: String,
-      required: false,
-    },
-    isAtivo: {
+    isActive: {
       type: Boolean,
       required: false,
-    },
-    isOnline: {
-      type: Boolean,
-      required: false,
+      default: true,
     },
   },
   { collection: "user", versionKey: false }
