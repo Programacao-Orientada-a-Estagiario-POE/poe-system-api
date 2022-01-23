@@ -11,6 +11,7 @@
     "test": "yarn run test:unit && yarn run test:int",
     "test:unit": "jest --config ./jest/jest.config.js --detectOpenHandles",
     "test:int": "jest --runInBand --forceExit --config ./jest/jest.int-config.js --detectOpenHandles",
+    "test:int:watch": "yarn run test:int -- --watch -- --inspect=0.0.0.0:7001",
     "test:int:coverage": "jest --coverage --runInBand --forceExit --config ./jest/jest.int-config.js --detectOpenHandles",
     "dev": "ts-node-dev src/server.ts",
     "dev:debug": "ts-node-dev --inspect=0.0.0.0:7001 --exit-child --respawn src/server.ts",
@@ -29,6 +30,7 @@
     "express-openapi-validator": "^4.11.0",
     "js-yaml": "^4.0.0",
     "jsonwebtoken": "^8.5.1",
+    "lodash": "^4.17.21",
     "mongoose": "^6.0.2",
     "supertest": "^6.1.6",
     "swagger-ui-express": "^4.1.6",
@@ -36,7 +38,6 @@
     "uuid": "^8.3.2"
   },
   "devDependencies": {
-    "@types/js-yaml": "^4.0.0",
     "@commitlint/cli": "^12.1.1",
     "@commitlint/config-conventional": "^12.1.1",
     "@semantic-release/changelog": "^5.0.1",
@@ -46,7 +47,9 @@
     "@types/cors": "^2.8.12",
     "@types/express": "^4.17.11",
     "@types/jest": "^26.0.23",
+    "@types/js-yaml": "^4.0.0",
     "@types/jsonwebtoken": "^8.5.6",
+    "@types/lodash": "^4.14.178",
     "@types/node": "^16.11.6",
     "@types/supertest": "^2.0.11",
     "@types/swagger-ui-express": "^4.1.2",
